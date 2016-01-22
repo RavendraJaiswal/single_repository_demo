@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>Demo For Entitlement Check</title>
+    <style>
+      body {
+        font: 14px Helvetica;
+      }
+      
+    </style>
+    
+    <script type="text/javascript">
+    function openPlayer()
+    {
+    var temp = document.getElementById("serverUrl").value + "?"
+     + "mediaFileUrl=" + document.getElementById("mediaFileUrl").value + "&"
+   	+ "cacheId=" + document.getElementById("cacheId").value + "&"
+   	+ "mediaId=" + document.getElementById("mediaId").value + "&"
+   	+ "productId=" + document.getElementById("productId").value + "&"
+   	+ "productPrice=" + document.getElementById("productPrice").value + "&"
+   	+ "currencyCode=" + document.getElementById("currencyCode").value + "&"
+   	+ "localeInfo=" +  document.getElementById("localeInfo").value + "&"
+   	+ "physicalMediaId=" + document.getElementById("physicalMediaId").value + "&"
+   	+ "logicalMediaId=" + document.getElementById("physicalMediaId").value;
+    window.open(temp);
+    window.close();
+    }
+    </script>
+  </head>
+  <body>
+	<h3>Demo For Entitlement Check</h3>
+
+	<p>This webpage is only for basic Adobe's player to test entitlement check for autonomous and conntected mode. This is help tool and not a product to be distributed.</p>	
+<br>
+<hr>
+<br>
+<form>
+<div style="display:block">
+Flash Application Url : 
+<input type="text" name="serverUrl" id="serverUrl" maxlength=255 size=100 value="http://gogoinflight.com/~Hawk/pmp-desktop/ReferencePlayer/ReferencePlayer.html">
+<br>
+<br>
+cacheId : 
+<input type="text" name="cacheId" id="cacheId" maxlength=255 size=60 value="freeVideo">
+<br>
+<br>
+mediaId : 
+<input type="text" name="mediaId" id="mediaId" maxlength=255 size=60 value="m-005">
+<br>
+<br>
+productId :
+<input type="text" name="productId" id="productId" maxlength=255 size=60 value="PC003">
+<br>
+<br>
+productPrice :
+<input type="text" name="productPrice" id="productPrice" maxlength=255 size=60 value="0.00">
+<br>
+<br>
+currencyCode :
+<input type="text" name="currencyCode" id="currencyCode" maxlength=255 size=60 value="USD">
+<br><br>
+localeInfo :
+<input type="text" name="localeInfo" id="localeInfo" maxlength=255 size=60 value="en-US">
+<br><br>
+physicalMediaId :
+<input type="text" name="physicalMediaId" id="physicalMediaId" maxlength=255 size=60 value="ASCVFF0005">
+<br>
+<br>
+logicalMediaId :
+<input type="text" name="logicalMediaId" id="logicalMediaId" maxlength=255 size=60 value="m-005">
+<br><br>
+mediaFileUrl :
+<input type="url" name="mediaFileUrl" id="mediaFileUrl" maxlength=255 size=60 value="http://10.1.16.243/videos/enc/EndersGame/EndersGame.m3u8">
+<br>
+<br>
+
+</div>
+<div style="text-align:center;">  
+<!-- <input type="submit" align="middle" style="height:100px; width:150px; color:blue; font-size:larger; font-weight:bold; text-transform:uppercase;" onClick="openPlayer();"> -->
+<button align="middle" style="height:50px; width:120px; color:blue; font-size:larger; font-weight:bold; text-transform:uppercase;" onClick="return openPlayer();">Play</button>
+</div>
+</form>
+  </body>
+</html>
+

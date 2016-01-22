@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <!--
+      Smart developers always View Source.
+
+      This application was built using Adobe Flex, an open source framework
+      for building rich Internet applications that get delivered via the
+      Flash Player or to desktops via Adobe AIR.
+
+      Learn more about Flex at http://flex.org
+      // -->
+  <head>
+    <title>Gogo Primetime Desktop Player</title>
+    <meta name="google" value="notranslate" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- Include CSS to eliminate any default margins/padding and set the height of the html element and
+         the body element to 100%, because Firefox, or any Gecko based browser, interprets percentage as
+         the percentage of the height of its parent container, which has to be set explicitly.  Fix for
+         Firefox 3.6 focus border issues.  Initially, don't display flashContent div so it won't show
+         if JavaScript disabled.
+      -->
+    <style type="text/css" media="screen">
+      html, body  { height:100%; }
+      body { margin:0; padding:0; overflow:auto; text-align:center;
+      background-color: #000000; }
+      object:focus { outline:none; }
+      #flashContent { display:none; }
+    </style>
+
+    <!-- Enable Browser History by replacing useBrowserHistory tokens with two hyphens -->
+    <!-- BEGIN Browser History required section ${useBrowserHistory}>
+         <link rel="stylesheet" type="text/css" href="history/history.css" />
+         <script type="text/javascript" src="history/history.js"></script>
+         <!${useBrowserHistory} END Browser History required section -->
+
+    <script type="text/javascript" src="swfobject.js"></script>
+    <!-- parse the arguments sent via query -->
+    <script type="text/javascript">
+          function getURLParameter(name) {
+              return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+          }
+    </script>
+      <script type="text/javascript">
+
+          setInterval(function() {window.objSwf.Pause()}, 20000);
+          setInterval(function(){window.objSwf.PlayMedia()},10000);
+          window.objSwf = null;
+          function displayDrmError(code)
+          {
+              console.log("JS: Drm Error :"  + code);
+          }
+
+          function displayDrmRetry()
+          {
+              console.log("JS: Drm Retry");
+          }
+
+          function displayDrmMetadataInfo()
+          {
+              console.log("JS: Drm Metadata Info available");
+          }
+
+          function displayLoaderComplete()
+          {
+              console.log("JS: displayLoaderComplete");
+          }
+
+          function displayLoaderFailed()
+          {
+              console.log("JS: displayLoaderFailed");
+          }
+
+          function displayBufferBegin()
+          {
+              console.log("JS: displayBufferBegin");
+          }
+
+          function displayBufferEnd()
+          {
+              console.log("JS: displayBufferEnd");
+          }
+          function displayPlaybackError(code, runtimecode)
+          {
+              if(code != undefined && runtimecode != undefined)
+                console.log("JS: displayPlaybackError : " + code + " : " + runtimecode);
+              else
+                  console.log("JS: displayPlaybackError");
+          }
+          function displayPaused(code)
+          {
+              console.log("JS: displayPaused : " + code);
+          }
+          function displayPlaying()
+          {
+              console.log("JS: displayPlaying");
+          }
+          function displayPrepared()
+          {
+
+              console.log("JS: displayPrepared");
+              //objSwf.Play();
+          }
+          function displayItemCreated()
+          {
+              console.log("JS: displayItemCreated");
+          }
+          function displayItemUpdated()
+          {
+              console.log("JS: displayItemUpdated");
+          }
+          function displayStatusChanged(code)
+          {
+              if(code != undefined)
+                console.log("JS: displayStatusChanged : :" + code);
+              else
+                  console.log("JS: displayStatusChanged : ");
+          }
+          function displayTimeChanged(num)
+          {
+              if (num != undefined)
+                console.log("JS: displayTimeChanged: : " + num);
+              else
+                  console.log("JS: displayTimeChanged.");
+             // if (num >10000 && num < 10300)
+               //  window.objSwf.Pause();
+
+                //  window.objSwf.PlayMedia();
+                //objSwf.Seek(1234000);  //objSwf.Pause(); //objSwf.Close();
+          }
+
+
+
+          function onJSBridgeReady()
+          {
+              window.alert("JS Bridge is ready");
+              window.objSwf = document.getElementById("ReferencePlayer");
+              window.objSwf.RegisterEventCallback("EventDrmError", "displayDrmError");
+              window.objSwf.RegisterEventCallback("EventDrmRetry", "displayDrmRetry");
+              window.objSwf.RegisterEventCallback("EventDrmMetadataInfoAvailable", "displayDrmMetadataInfo");
+
+              window.objSwf.RegisterEventCallback("EventItemLoaderCompleted", "displayLoaderComplete");
+              window.objSwf.RegisterEventCallback("EventItemLoaderFailed", "displayLoaderFailed");
+
+              window.objSwf.RegisterEventCallback("EventPlaybackBufferingStart", "displayBufferBegin");
+              window.objSwf.RegisterEventCallback("EventPlaybackBufferingComplete", "displayBufferEnd");
+              window.objSwf.RegisterEventCallback("EventPlaybackError", "displayPlaybackError");
+              window.objSwf.RegisterEventCallback("EventPlaybackPaused", "displayPaused");
+              window.objSwf.RegisterEventCallback("EventPlaybackPlaying", "displayPlaying");
+              window.objSwf.RegisterEventCallback("EventPlaybackPrepared", "displayPrepared");
+              window.objSwf.RegisterEventCallback("EventPlaybackItemCreated", "displayItemCreated");
+              window.objSwf.RegisterEventCallback("EventPlaybackItemUpdated", "displayItemUpdated");
+              window.objSwf.RegisterEventCallback("EventPlaybackTimeChanged", "displayTimeChanged");
+              //objSwf.Play();
+
+              //objSwf.Pause();//objSwf.Pause(); //objSwf.Close();
+
+          }
+
+          function onCloseDone()
+          {
+              close();
+          }
+
+      </script>
+    <script type="text/javascript">
+
+      <!-- Config Constants -->
+      var PLAYBACK_CATALOG_URL 		= "playback_catalog_URL";
+      var PLAYBACK_MANIFEST_URL 	= "playback_manifest_URL";
+      var PLAYBACK_TOKEN_URL		= "playback_token_url";
+      var PLAYBACK_TOKEN_FILE_TYPE	= "playback_token_file_type";
+
+      var SETTINGS_AD_TARGETING_KEY 	= "settings_ad_targetingKey";
+      var SETTINGS_AD_TARGETING_VALUE   = "settings_ad_targetingValue";
+      var SETTINGS_AD_DOMAIN 		= "settings_ad_domain";
+      var SETTINGS_AD_MEDIA_ID 		= "settings_ad_mediaid";
+      var SETTINGS_AD_ZONE_ID 		= "settings_ad_zoneid";
+
+      var SETTINGS_AUTOPLAY 		= "settings_autoplay";
+
+      <!-- ABR Constants -->
+      var SETTINGS_ABR_CTRL_ENABLED 	 = "settings_abr_enabled";
+      var SETTINGS_ABR_INITIAL_BITRATE   = "settings_abr_initial_bit_rate";
+      var SETTINGS_ABR_MIN_BITRATE 	 = "settings_abr_min_bit_rate";
+      var SETTINGS_ABR_MAX_BITRATE 	 = "settings_abr_max_bit_rate";
+      var SETTINGS_ABR_POLICY 		 = "settings_abr__policy";
+
+      <!-- Buffer Constants -->
+      var SETTINGS_BUFFER_INIT = "settings_init_buffer";
+      var SETTINGS_BUFFER_TIME = "settings_buffer_time";
+
+      <!-- Ad Constants -->
+      var SETTINGS_CLICKABLE_ADS	            		  = "settings_clickable_ads";
+      var SETTINGS_CUSTOM_AD_CUES           			  = "settings_custom_ad_cues";
+      var SETTINGS_SUBSCRIBED_CUES          			  = "settings_subscribed_cues";
+      var SETTINGS_SEEK_IN_AD           				  = "settings_seek_in_ad";
+      var SETTINGS_ADVERTISING_WORKFLOW_ENABLED           = "settings_advertising_workflow_enabled";
+      var SETTINGS_CUSTOM_AD_CLIENT_FACTORY 	          = "settings_custom_ad_client_factory";
+      var SETTINGS_ADVERTISING_SIGNALING_MODE             = "settings_advertising_signaling_mode"
+      var SETTINGS_CUSTOM_ADS                             = "settings_custom_ads";
+
+      <!-- CC Constants -->
+      var SETTINGS_CC_VISIBILITY            			 = "settings_cc_visibility";
+      var SETTINGS_CC_STYLE_FONT 	            		 = "settings_cc_style_font";
+      var SETTINGS_CC_STYLE_FONT_COLOR    	  	         = "settings_cc_style_font_color";
+      var SETTINGS_CC_STYLE_BACKGROUND_COLOR 	         = "settings_cc_style_bg_color";
+      var SETTINGS_CC_STYLE_EDGE_COLOR	    	         = "settings_cc_style_edge_color";
+      var SETTINGS_CC_STYLE_SIZE 		            	 = "settings_cc_style_size";
+      var SETTINGS_CC_STYLE_FONT_EDGE    		         = "settings_cc_style_font_edge";
+      var SETTINGS_CC_STYLE_FONT_OPACITY        		 = "settings_cc_style_font_opacity";
+      var SETTINGS_CC_STYLE_BACKGROUND_OPACITY           = "settings_cc_style_bg_opacity";
+      var SETTINGS_CC_STYLE_BOTTOM_INSET                 = "settings_cc_style_bottom_inset";
+
+      <!-- Entitlement Check -->
+      var E_CACHEID                                      = "cacheId";
+      var E_MEDIAID                                      = "mediaId";
+      var E_PRODID                                       = "productId";
+      var E_PRODPRICE                                    = "productPrice";
+      var E_CURCODE                                      = "currencyCode";
+      var E_LOCINFO                                      = "localeInfo";
+      var E_PHYMEDIAID                                   = "physicalMediaId";
+      var E_LOGMEDIAID                                   = "logicalMediaId";
+
+      <!-- Logging properties -->
+      var LOGGER_TYPE                                   = "settings_logger_type";
+
+      <!-- QOS Visibility -->
+      var SETTINGS_QOS_VISIBILITY                       = "settings_qos_visibility";
+
+
+
+      // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection.
+      var swfVersionStr = "17.0.0";
+      // To use express install, set to playerProductInstall.swf, otherwise the empty string.
+      var xiSwfUrlStr = "${expressInstallSwf}";
+      var flashvars = {};
+
+      <!-- Config settings used without Catalog mode -->
+      flashvars[PLAYBACK_CATALOG_URL]   	  	= "../catalog/test_catalog.json";
+      flashvars[PLAYBACK_MANIFEST_URL]  	  	= getURLParameter("mediaFileUrl");
+      flashvars[PLAYBACK_TOKEN_URL] 	  		= "/../token/gogo_domain.swf";
+      flashvars[PLAYBACK_TOKEN_FILE_TYPE] 		= "SWF";
+      flashvars[LOGGER_TYPE]                    = "socket";
+
+      flashvars[SETTINGS_AD_TARGETING_KEY]   	= "";
+      flashvars[SETTINGS_AD_TARGETING_VALUE] 	= "";
+      flashvars[SETTINGS_AD_DOMAIN] 		  	= "";
+      flashvars[SETTINGS_AD_MEDIA_ID]			= "";
+      flashvars[SETTINGS_AD_ZONE_ID] 		  	= "";
+      <!-- Config settings used without Catalog mode end -->
+
+      flashvars[SETTINGS_ABR_CTRL_ENABLED]  	= "false";
+      flashvars[SETTINGS_ABR_INITIAL_BITRATE]   = "800000";
+      flashvars[SETTINGS_ABR_MIN_BITRATE]   	= "150000";
+      flashvars[SETTINGS_ABR_MAX_BITRATE]   	= "12000000";
+
+      flashvars[SETTINGS_BUFFER_INIT] = 1500;
+      flashvars[SETTINGS_BUFFER_TIME] = 12000;
+
+      flashvars[SETTINGS_AUTOPLAY] = true;
+
+      flashvars[SETTINGS_ADVERTISING_WORKFLOW_ENABLED] = true;
+      flashvars[SETTINGS_CLICKABLE_ADS] = true;
+      flashvars[SETTINGS_SEEK_IN_AD] = false;
+      flashvars[SETTINGS_CUSTOM_ADS] = true;
+
+      flashvars[SETTINGS_CC_VISIBILITY] 			  	= "true";
+      flashvars[SETTINGS_CC_STYLE_FONT] 			  	= "default";
+      flashvars[SETTINGS_CC_STYLE_FONT_COLOR]    	  	= "default";
+      flashvars[SETTINGS_CC_STYLE_BACKGROUND_COLOR] 	= "default";
+      flashvars[SETTINGS_CC_STYLE_BACKGROUND_OPACITY]   = "default";
+      flashvars[SETTINGS_CC_STYLE_EDGE_COLOR] 	     	= "default";
+      flashvars[SETTINGS_CC_STYLE_SIZE] 			  	= "default";
+      flashvars[SETTINGS_CC_STYLE_FONT_EDGE] 		  	= "default";
+      flashvars[SETTINGS_CC_STYLE_FONT_OPACITY] 	  	= "default";
+      <!-- Note, special characters must be URL encoded -->
+      <!-- When specifying a CC bottom inset as percent, use '%25', as in 30%25 -->
+      flashvars[SETTINGS_CC_STYLE_BOTTOM_INSET]       = "default";
+
+      <!-- Entitlement Check -->
+      flashvars[E_CACHEID]                    = getURLParameter("cacheId");
+      flashvars[E_CURCODE]                    = getURLParameter("currencyCode");
+      flashvars[E_MEDIAID]                    = getURLParameter("mediaId");
+      flashvars[E_PRODID]                     = getURLParameter("productId");
+      flashvars[E_PRODPRICE]                  = getURLParameter("productPrice");
+      flashvars[E_LOCINFO]                    = getURLParameter("localeInfo");
+      flashvars[E_PHYMEDIAID]                 = getURLParameter("physicalMediaId");
+      flashvars[E_LOGMEDIAID]                 = getURLParameter("logicalMediaId");
+
+      flashvars[LOGGER_TYPE]                   = "socket";
+      flashvars[SETTINGS_QOS_VISIBILITY]       = "false";
+
+      var params = {};
+      params.quality = "high";
+      params.bgcolor = "#000000";
+      params.allowscriptaccess = "sameDomain";
+      params.allowfullscreen = "true";
+      params.wmode = "direct";
+      var attributes = {};
+      attributes.id = "ReferencePlayer";
+      attributes.name = "ReferencePlayer";
+      attributes.align = "middle";
+      swfobject.embedSWF(
+      "ReferencePlayer.swf", "flashContent",
+      "100%", "100%",
+      swfVersionStr, xiSwfUrlStr,
+      flashvars, params, attributes);
+      // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
+      swfobject.createCSS("#flashContent", "display:block;text-align:left;");
+    </script>
+  </head>
+  <body>
+    <!-- SWFObject's dynamic embed method replaces this alternative HTML content with Flash content when enough
+         JavaScript and Flash plug-in support is available. The div is initially hidden so that it doesn't show
+         when JavaScript is disabled.
+      -->
+    <div id="flashContent">
+      <p>
+        To view this page ensure that Adobe Flash Player version
+        17.0.0 or greater is installed.
+      </p>
+      <script type="text/javascript">
+        var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://");
+        document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='"
+										    + pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" );
+      </script>
+    </div>
+
+    <noscript>
+      <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="100%" id="ReferencePlayer">
+        <param name="movie" value="ReferencePlayer.swf" />
+        <param name="quality" value="high" />
+        <param name="bgcolor" value="#000000" />
+        <param name="allowScriptAccess" value="sameDomain" />
+        <param name="allowFullScreen" value="true" />
+	<param name="wmode" value="direct" />
+        <!--[if !IE]>-->
+        <object type="application/x-shockwave-flash" data="ReferencePlayer.swf" width="100%" height="100%">
+          <param name="quality" value="high" />
+          <param name="bgcolor" value="#000000" />
+          <param name="allowScriptAccess" value="sameDomain" />
+          <param name="allowFullScreen" value="true" />
+	  <param name="wmode" value="direct" />
+          <!--<![endif]-->
+          <!--[if gte IE 6]>-->
+          <p>
+            Either scripts and active content are not permitted to run or Adobe Flash Player version
+            17.0.0 or greater is not installed.
+          </p>
+          <!--<![endif]-->
+          <a href="http://www.adobe.com/go/getflashplayer">
+            <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash Player" />
+          </a>
+          <!--[if !IE]>-->
+        </object>
+        <!--<![endif]-->
+      </object>
+    </noscript>
+  </body>
+</html>
